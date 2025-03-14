@@ -1,0 +1,149 @@
+/* Background Elements */
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.bg-element {
+    position: absolute;
+    opacity: 0.05;
+    filter: blur(1px);
+}
+
+/* Circle element */
+.bg-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    top: 10%;
+    left: 5%;
+}
+
+/* Square element */
+.bg-square {
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--primary-color);
+    bottom: 15%;
+    right: 10%;
+    transform: rotate(45deg);
+}
+
+/* Dots pattern */
+.bg-dots {
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(var(--primary-color) 2px, transparent 2px);
+    background-size: 20px 20px;
+    top: 60%;
+    left: 15%;
+}
+
+/* Line element */
+.bg-line {
+    width: 2px;
+    height: 300px;
+    background-color: var(--primary-color);
+    top: 20%;
+    right: 30%;
+    transform: rotate(30deg);
+}
+
+/* Triangle element */
+.bg-triangle {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 173px solid var(--primary-color);
+    opacity: 0.03;
+    bottom: 5%;
+    left: 40%;
+}
+
+/* Code element */
+.bg-code {
+    font-family: monospace;
+    color: var(--primary-color);
+    font-size: 12px;
+    opacity: 0.1;
+    top: 40%;
+    right: 5%;
+    width: 300px;
+    transform: rotate(-10deg);
+    white-space: pre;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.03; }
+    50% { opacity: 0.08; }
+    100% { opacity: 0.03; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bg-circle {
+        width: 200px;
+        height: 200px;
+        top: 5%;
+        left: -50px;
+    }
+    
+    .bg-square {
+        width: 100px;
+        height: 100px;
+        bottom: 10%;
+        right: -30px;
+    }
+    
+    .bg-dots {
+        width: 150px;
+        height: 150px;
+        top: 70%;
+        left: 5%;
+    }
+    
+    .bg-line {
+        height: 200px;
+        top: 15%;
+        right: 20%;
+    }
+    
+    .bg-triangle {
+        border-left: 60px solid transparent;
+        border-right: 60px solid transparent;
+        border-bottom: 104px solid var(--primary-color);
+        bottom: 5%;
+        left: 30%;
+    }
+    
+    .bg-code {
+        font-size: 10px;
+        top: 50%;
+        right: -50px;
+        width: 200px;
+    }
+}

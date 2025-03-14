@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Juyel Rana</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Particle Background (subtle) -->
+    <div class="particles-container">
+        <canvas id="particles"></canvas>
+    </div>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <div class="logo">Juyel<span class="dot">.</span></div>
+            </div>
+            
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="work.html">Work</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="hire-btn">
+                    Hire me
+                    <i class="fas fa-arrow-right hire-btn-icon"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <main class="contact-container">
+        <div class="section-title">
+            <h1 class="title-text">Get in Touch</h1>
+            <div class="title-bar"></div>
+        </div>
+        
+        <div class="contact-wrapper">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-intro">
+                    <p>Have a project in mind or want to discuss a potential collaboration? I'd love to hear from you. Fill out the form, and I'll get back to you as soon as possible.</p>
+                </div>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Location</h3>
+                            <p>Kolkata, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>ranajuyel460@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Phone</h3>
+                            <p>(+91) 7679862322</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Social Media Links -->
+                <div class="social-links-container">
+                    <h3 class="social-title">Connect With Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/Rana0Codes" target="_blank" class="social-link" aria-label="GitHub">
+                            <img src="images/icons/github.svg" alt="GitHub">
+                            <span class="social-tooltip">GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/juyel-rana/" target="_blank" class="social-link" aria-label="LinkedIn">
+                            <img src="images/icons/linkedin.svg" alt="LinkedIn">
+                            <span class="social-tooltip">LinkedIn</span>
+                        </a>
+                        <a href="https://x.com/Rana0Codes" target="_blank" class="social-link" aria-label="X">
+                            <img src="images/icons/x.svg" alt="X">
+                            <span class="social-tooltip">X</span>
+                        </a>
+                        <a href="https://www.instagram.com/rana0codes/" target="_blank" class="social-link" aria-label="Instagram">
+                            <img src="images/icons/instagram.svg" alt="Instagram">
+                            <span class="social-tooltip">Instagram</span>
+                        </a>
+                        <a href="https://www.youtube.com/@Rana0Codes" target="_blank" class="social-link" aria-label="YouTube">
+                            <img src="images/icons/youtube.svg" alt="YouTube">
+                            <span class="social-tooltip">YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h2 class="form-title">Send a Message</h2>
+                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="b174570c-d605-498a-bb70-44db2e7c9007">
+                    <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio">
+                    <input type="hidden" name="from_name" value="Portfolio Contact Form">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
+                    <div class="form-group floating-label">
+                        <input type="text" id="name" name="name" placeholder=" " required>
+                        <label for="name">Name</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <div class="form-group floating-label">
+                        <input type="email" id="email" name="email" placeholder=" " required>
+                        <label for="email">Email</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <div class="form-group select-container">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile App Development">Mobile App Development</option>
+                            <option value="UI/UX Design">UI/UX Design</option>
+                            <option value="Software Development">Software Development</option>
+                            <option value="Consultation">Consultation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="focus-border"></span>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                    
+                    <div class="form-group floating-label">
+                        <textarea id="message" name="message" rows="5" placeholder=" " required></textarea>
+                        <label for="message">Message</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
