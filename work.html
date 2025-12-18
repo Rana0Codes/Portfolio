@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Work - Juyel Rana</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Explore my portfolio of web development, AI/ML, analytics, and collaboration projects. Built with modern technologies and best practices.">
+    <meta name="keywords" content="portfolio, web development, projects, AI, machine learning, analytics">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/work.css">
+    <link rel="stylesheet" href="css/background-elements.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Firebase SDKs (Compat version for simplicity) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo-container">
+                <div class="logo">Juyel<span class="dot">.</span></div>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="work.html" class="active">Work</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="contact.html" class="hire-btn">
+                    Hire me
+                    <i class="fas fa-arrow-right hire-btn-icon"></i>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Work Section -->
+    <main class="work-container">
+        <!-- Page Title -->
+        <div class="page-header">
+            <h1 class="page-title">My <span class="highlight">Work</span></h1>
+            <p class="page-subtitle">Explore my latest projects and creations</p>
+        </div>
+
+        <!-- Search and Filter Section -->
+        <div class="controls-section">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search projects..."
+                    aria-label="Search projects">
+                <button id="clearSearch" class="clear-search" aria-label="Clear search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Project Categories -->
+            <div class="project-categories">
+                <button class="category-btn active" data-filter="all">
+                    All Projects
+                    <span class="count" id="count-all">0</span>
+                </button>
+                <button class="category-btn" data-filter="web">
+                    Web Apps
+                    <span class="count" id="count-web">0</span>
+                </button>
+                <button class="category-btn" data-filter="ai">
+                    AI/ML
+                    <span class="count" id="count-ai">0</span>
+                </button>
+                <button class="category-btn" data-filter="analytics">
+                    Analytics
+                    <span class="count" id="count-analytics">0</span>
+                </button>
+                <button class="category-btn" data-filter="collaboration">
+                    Collaboration
+                    <span class="count" id="count-collaboration">0</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state">
+            <div class="skeleton-grid">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="error-state" style="display: none;">
+            <div class="error-content">
+                <i class="fas fa-exclamation-triangle error-icon"></i>
+                <h3>Oops! Something went wrong</h3>
+                <p>Unable to load projects. Please check your connection and try again.</p>
+                <button id="retryBtn" class="retry-btn">
+                    <i class="fas fa-redo"></i> Retry
+                </button>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-content">
+                <i class="fas fa-search empty-icon"></i>
+                <h3>No projects found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div id="projectsGrid" class="projects-grid"></div>
+
+    </main>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Scripts -->
+    <script src="js/header.js"></script>
+    <script src="js/background-elements.js"></script>
+    <script src="js/work.js"></script>
+</body>
+
+</html>

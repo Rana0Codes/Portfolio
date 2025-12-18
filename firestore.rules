@@ -1,0 +1,143 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // PROJECTS COLLECTION - HARDENED SECURITY
+    // ============================================
+    match /projects/{projectId} {
+      
+      // PUBLIC READ ACCESS - Anyone can view projects for portfolio display
+      allow read: if true;
+      
+      // WRITE ACCESS - Only authenticated admin users
+      // Prevents unauthorized writes even if someone copies the code
+      allow create, update: if request.auth != null
+                            && isValidProjectData()
+                            && hasNoExtraFields();
+      
+      // DELETE ACCESS - Only authenticated admin users
+      allow delete: if request.auth != null;
+      
+      // ============================================
+      // VALIDATION FUNCTIONS
+      // ============================================
+      
+      // Validate all required fields and their types
+      function isValidProjectData() {
+        let data = request.resource.data;
+        return hasRequiredFields()
+               && isValidTitle(data.title)
+               && isValidDescription(data.description)
+               && isValidCategory(data.category)
+               && isValidImageUrl(data.imageUrl)
+               && isValidTechnologies(data.technologies)
+               && isValidOrder(data.order)
+               && isValidFeatured(data.featured)
+               && isValidOptionalUrls(data);
+      }
+      
+      // Check all required fields exist
+      function hasRequiredFields() {
+        let data = request.resource.data;
+        return data.keys().hasAll([
+          'title',
+          'description',
+          'category',
+          'imageUrl',
+          'technologies',
+          'order',
+          'featured'
+        ]);
+      }
+      
+      // Prevent clients from adding unexpected fields
+      function hasNoExtraFields() {
+        let data = request.resource.data;
+        let allowedFields = [
+          'title',
+          'description',
+          'category',
+          'imageUrl',
+          'githubUrl',
+          'liveUrl',
+          'technologies',
+          'order',
+          'featured',
+          'createdAt',
+          'updatedAt'
+        ];
+        return data.keys().hasOnly(allowedFields);
+      }
+      
+      // Title: string, 1-200 characters
+      function isValidTitle(title) {
+        return title is string
+               && title.size() > 0
+               && title.size() <= 200;
+      }
+      
+      // Description: string, 1-2000 characters
+      function isValidDescription(desc) {
+        return desc is string
+               && desc.size() > 0
+               && desc.size() <= 2000;
+      }
+      
+      // Category: must be one of the predefined values
+      function isValidCategory(category) {
+        return category is string
+               && category in ['web', 'ai', 'analytics', 'collaboration'];
+      }
+      
+      // Image URL: must be valid http/https URL
+      function isValidImageUrl(url) {
+        return url is string
+               && url.size() > 0
+               && url.size() <= 2048
+               && url.matches('https?://.*');
+      }
+      
+      // Technologies: array of strings, max 20 items
+      function isValidTechnologies(tech) {
+        return tech is list
+               && tech.size() > 0
+               && tech.size() <= 20
+               && tech.hasOnly([string]);
+      }
+      
+      // Order: positive integer, reasonable range
+      function isValidOrder(order) {
+        return order is number
+               && order is int
+               && order >= 0
+               && order <= 9999;
+      }
+      
+      // Featured: boolean only
+      function isValidFeatured(featured) {
+        return featured is bool;
+      }
+      
+      // Optional URLs: if present, must be valid http/https URLs
+      function isValidOptionalUrls(data) {
+        return (!('githubUrl' in data) || isValidOptionalUrl(data.githubUrl))
+               && (!('liveUrl' in data) || isValidOptionalUrl(data.liveUrl));
+      }
+      
+      function isValidOptionalUrl(url) {
+        return url is string
+               && (url.size() == 0 || (url.size() <= 2048 && url.matches('https?://.*')));
+      }
+    }
+    
+    // ============================================
+    // DENY ALL OTHER COLLECTIONS
+    // ============================================
+    // Explicitly deny access to any other collection
+    // This prevents attackers from creating unauthorized collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

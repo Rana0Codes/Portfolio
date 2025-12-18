@@ -1,0 +1,262 @@
+/* ============================================
+   BACKGROUND ELEMENTS - RESPONSIVE
+   ============================================ */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.bg-element {
+    position: absolute;
+    opacity: 0.05;
+    filter: blur(1px);
+}
+
+/* ============================================
+   MOBILE FIRST - BASE STYLES (320px+)
+   ============================================ */
+
+/* Circle element */
+.bg-circle {
+    width: clamp(150px, 40vw, 300px);
+    height: clamp(150px, 40vw, 300px);
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    top: 5%;
+    left: -10%;
+}
+
+/* Square element */
+.bg-square {
+    width: clamp(80px, 20vw, 150px);
+    height: clamp(80px, 20vw, 150px);
+    border: 2px solid var(--primary-color);
+    bottom: 10%;
+    right: -5%;
+    transform: rotate(45deg);
+}
+
+/* Dots pattern */
+.bg-dots {
+    width: clamp(100px, 30vw, 200px);
+    height: clamp(100px, 30vw, 200px);
+    background-image: radial-gradient(var(--primary-color) 1.5px, transparent 1.5px);
+    background-size: clamp(15px, 4vw, 20px) clamp(15px, 4vw, 20px);
+    top: 70%;
+    left: 5%;
+}
+
+/* Line element */
+.bg-line {
+    width: 2px;
+    height: clamp(150px, 40vw, 300px);
+    background-color: var(--primary-color);
+    top: 15%;
+    right: 15%;
+    transform: rotate(30deg);
+}
+
+/* Triangle element */
+.bg-triangle {
+    width: 0;
+    height: 0;
+    border-left: clamp(50px, 15vw, 100px) solid transparent;
+    border-right: clamp(50px, 15vw, 100px) solid transparent;
+    border-bottom: clamp(87px, 26vw, 173px) solid var(--primary-color);
+    opacity: 0.03;
+    bottom: 5%;
+    left: 25%;
+}
+
+/* Code element */
+.bg-code {
+    font-family: monospace;
+    color: var(--primary-color);
+    font-size: clamp(9px, 2.5vw, 12px);
+    opacity: 0.1;
+    top: 50%;
+    right: -10%;
+    width: clamp(150px, 50vw, 300px);
+    transform: rotate(-10deg);
+    white-space: pre;
+    display: none;
+    /* Hidden on mobile to reduce clutter */
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.03;
+    }
+
+    50% {
+        opacity: 0.08;
+    }
+
+    100% {
+        opacity: 0.03;
+    }
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Small phones (375px+) */
+@media (min-width: 375px) {
+    .bg-circle {
+        left: -5%;
+    }
+
+    .bg-square {
+        right: -3%;
+    }
+}
+
+/* Large phones (480px+) */
+@media (min-width: 480px) {
+    .bg-code {
+        display: block;
+        /* Show code element on larger phones */
+    }
+
+    .bg-dots {
+        top: 65%;
+        left: 10%;
+    }
+}
+
+/* Tablets (768px+) */
+@media (min-width: 768px) {
+    .bg-circle {
+        width: 250px;
+        height: 250px;
+        top: 10%;
+        left: 5%;
+    }
+
+    .bg-square {
+        width: 130px;
+        height: 130px;
+        bottom: 15%;
+        right: 8%;
+    }
+
+    .bg-dots {
+        width: 180px;
+        height: 180px;
+        background-size: 18px 18px;
+        top: 60%;
+        left: 15%;
+    }
+
+    .bg-line {
+        height: 250px;
+        top: 20%;
+        right: 25%;
+    }
+
+    .bg-triangle {
+        border-left: 80px solid transparent;
+        border-right: 80px solid transparent;
+        border-bottom: 139px solid var(--primary-color);
+        bottom: 5%;
+        left: 35%;
+    }
+
+    .bg-code {
+        font-size: 11px;
+        top: 40%;
+        right: 0%;
+        width: 250px;
+    }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+    .bg-circle {
+        width: 300px;
+        height: 300px;
+    }
+
+    .bg-square {
+        width: 150px;
+        height: 150px;
+        right: 10%;
+    }
+
+    .bg-dots {
+        width: 200px;
+        height: 200px;
+        background-size: 20px 20px;
+    }
+
+    .bg-line {
+        height: 300px;
+        right: 30%;
+    }
+
+    .bg-triangle {
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 173px solid var(--primary-color);
+        left: 40%;
+    }
+
+    .bg-code {
+        font-size: 12px;
+        right: 5%;
+        width: 300px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    .bg-element {
+        animation: none !important;
+        transition: none !important;
+    }
+}

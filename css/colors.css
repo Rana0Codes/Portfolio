@@ -1,0 +1,194 @@
+/* ============================================
+   GLOBAL COLOR SYSTEM - UNIFIED PALETTE
+   ============================================
+   
+   This file defines the SINGLE source of truth for all colors
+   used across the entire portfolio website.
+   
+   Import this file FIRST in every page's CSS to ensure consistency.
+   ============================================ */
+
+:root {
+    /* ============================================
+       PRIMARY BRAND COLORS
+       ============================================ */
+
+    /* Main Brand Color - Vibrant Cyan/Green */
+    --color-primary: #00ffb3;
+    --color-primary-light: #33ffc4;
+    --color-primary-dark: #00cc8f;
+    --color-primary-glow: rgba(0, 255, 179, 0.3);
+    --color-primary-subtle: rgba(0, 255, 179, 0.1);
+
+    /* ============================================
+       BACKGROUND COLORS
+       ============================================ */
+
+    /* Main Backgrounds */
+    --color-bg-primary: #0a0a0a;
+    /* Darkest - Main background */
+    --color-bg-secondary: #111111;
+    /* Dark - Cards, sections */
+    --color-bg-tertiary: #1a1a1a;
+    /* Medium Dark - Inputs, buttons */
+    --color-bg-elevated: #222222;
+    /* Lighter - Hover states */
+
+    /* Transparent Backgrounds (for glassmorphism) */
+    --color-bg-glass: rgba(26, 26, 26, 0.6);
+    --color-bg-glass-dark: rgba(21, 21, 21, 0.8);
+    --color-bg-glass-light: rgba(42, 42, 42, 0.5);
+
+    /* ============================================
+       TEXT COLORS
+       ============================================ */
+
+    --color-text-primary: #ffffff;
+    /* Main text */
+    --color-text-secondary: #aaaaaa;
+    /* Secondary text */
+    --color-text-muted: #888888;
+    /* Muted text */
+    --color-text-subtle: #666666;
+    /* Very subtle text */
+
+    /* ============================================
+       BORDER & DIVIDER COLORS
+       ============================================ */
+
+    --color-border-primary: rgba(255, 255, 255, 0.1);
+    --color-border-secondary: rgba(255, 255, 255, 0.05);
+    --color-border-accent: rgba(0, 255, 179, 0.2);
+    --color-border-strong: rgba(0, 255, 179, 0.4);
+
+    /* ============================================
+       STATE COLORS
+       ============================================ */
+
+    /* Success */
+    --color-success: #00ffb3;
+    --color-success-bg: rgba(0, 255, 179, 0.1);
+
+    /* Error/Danger */
+    --color-error: #ff6b6b;
+    --color-error-bg: rgba(255, 107, 107, 0.1);
+
+    /* Warning */
+    --color-warning: #ffd93d;
+    --color-warning-bg: rgba(255, 217, 61, 0.1);
+
+    /* Info */
+    --color-info: #00d9ff;
+    --color-info-bg: rgba(0, 217, 255, 0.1);
+
+    /* ============================================
+       INTERACTIVE ELEMENT COLORS
+       ============================================ */
+
+    /* Buttons */
+    --color-button-bg: #1a1a1a;
+    --color-button-hover: #222222;
+    --color-button-active: #2a2a2a;
+
+    /* Inputs */
+    --color-input-bg: #1a1a1a;
+    --color-input-border: #2a2a2a;
+    --color-input-focus: #00ffb3;
+
+    /* Links */
+    --color-link: #00ffb3;
+    --color-link-hover: #33ffc4;
+
+    /* ============================================
+       SHADOW & GLOW EFFECTS
+       ============================================ */
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+    --glow-primary: 0 0 20px rgba(0, 255, 179, 0.3);
+    --glow-primary-strong: 0 0 30px rgba(0, 255, 179, 0.5);
+
+    /* ============================================
+       TRANSITIONS & ANIMATIONS
+       ============================================ */
+
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    --transition-bounce: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* ============================================
+       TYPOGRAPHY
+       ============================================ */
+
+    --font-mono: 'Space Mono', monospace;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    /* ============================================
+       SPACING SYSTEM
+       ============================================ */
+
+    --spacing-xs: 0.5rem;
+    /* 8px */
+    --spacing-sm: 1rem;
+    /* 16px */
+    --spacing-md: 1.5rem;
+    /* 24px */
+    --spacing-lg: 2rem;
+    /* 32px */
+    --spacing-xl: 3rem;
+    /* 48px */
+    --spacing-xxl: 4rem;
+    /* 64px */
+
+    /* ============================================
+       Z-INDEX SYSTEM
+       ============================================ */
+
+    --z-background: -2;
+    --z-background-elements: -1;
+    --z-base: 0;
+    --z-content: 1;
+    --z-header: 100;
+    --z-modal: 1000;
+    --z-notification: 2000;
+}
+
+/* ============================================
+   DARK MODE SUPPORT (Future Enhancement)
+   ============================================ */
+
+/* Uncomment when implementing dark mode toggle
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-bg-primary: #ffffff;
+        --color-bg-secondary: #f5f5f5;
+        --color-text-primary: #1a1a1a;
+        --color-text-secondary: #666666;
+    }
+}
+*/
+
+/* ============================================
+   USAGE NOTES
+   ============================================
+   
+   ALWAYS use these CSS variables instead of hardcoded colors:
+   
+   ✅ CORRECT:
+   color: var(--color-primary);
+   background: var(--color-bg-secondary);
+   
+   ❌ WRONG:
+   color: #00ffb3;
+   background: #111111;
+   
+   This ensures:
+   - Consistent colors across all pages
+   - Easy theme changes in one place
+   - Better maintainability
+   - Future dark mode support
+   ============================================ */
