@@ -2,7 +2,7 @@
 // IMPORTANT: This file is gitignored and should NOT be committed to GitHub
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDK-PJe8JMSwo0S-jdpgXAkk9iGJMa6h8E",
+    apiKey: "",
     authDomain: "portfolio-rana0codes.firebaseapp.com",
     projectId: "portfolio-rana0codes",
     storageBucket: "portfolio-rana0codes.firebasestorage.app",
@@ -29,3 +29,4 @@ db.enablePersistence()
     });
 
 console.log('Firebase initialized successfully!');
+
